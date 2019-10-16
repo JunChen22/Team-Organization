@@ -129,3 +129,8 @@ TODO.txt
 /react-view/npm-debug.log*
 /react-view/yarn-debug.log*
 /react-view/yarn-error.log*
+
+
+#maven script
+/mvnw
+/mvnwmvnw.cmd

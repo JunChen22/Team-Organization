@@ -3,7 +3,7 @@
 )
 
 Jun Hao Chen <br />
-Jia Ying CHen
+Jia Ying Chen
 
 Requirement:
 Java 1.8<br />
@@ -34,6 +34,6 @@ $ mvn spring-boot::run
 Client side<br />
 ```
 $ cd view
-$ nmp install 
+$ nmp install
 $ npm start
 ```
