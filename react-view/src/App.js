@@ -13,6 +13,7 @@ import setJWTToken from "./security/setJWTToken";
 import jwt_decode from "jwt-decode";
 import { SET_CURRENT_USER } from "./actions/types";
 import { logout } from "./actions/securityActions";
+import SideBar from "./components/sidebar/SideBar";
 
 const jwtToken = localStorage.jwtToken;
 
@@ -38,6 +39,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <Header />
+            <SideBar />
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />

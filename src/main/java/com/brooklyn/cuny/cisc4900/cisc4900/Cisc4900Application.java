@@ -22,9 +22,6 @@ public class Cisc4900Application {
 
         //ApplicationContext ac = new ClassPathXmlApplicationContext("cisc4900.iml");
         SpringApplication.run(Cisc4900Application.class, args);
-
-        int[] re = {2,3,4};
-        Arrays.sort(re);
     }
 
 }
