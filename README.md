@@ -1,5 +1,4 @@
-# CISC 4900 project
-[![Build Status](https://travis-ci.com/JunChen22/4900-alter.svg?branch=master)](https://travis-ci.com/JunChen22/4900-alter)
+# CISC 4900 project [![Build Status](https://travis-ci.com/JunChen22/4900-alter.svg?branch=master)](https://travis-ci.com/JunChen22/4900-alter)
 
 Jun Hao Chen <br />
 Jia Ying Chen
@@ -17,10 +16,6 @@ https://docs.google.com/document/d/1RnhMbKqBzHtNMnRVJeR-RHDnzEv0AFpr0F2BJrZpz0U/
 
 To start:<br />
 
-Database<br />
-```
-$ psql -U postgres -d springbootdb -f Init.sql
-```
 Default user is :postgres.
 Change postgres to different user needs to <br />
 change user and password in application.properties<br />
@@ -32,7 +27,6 @@ $ mvn spring-boot::run
 
 Client side<br />
 ```
-$ cd view
 $ nmp install
 $ npm start
 ```
