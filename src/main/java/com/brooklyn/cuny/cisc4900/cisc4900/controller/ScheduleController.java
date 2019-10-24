@@ -28,34 +28,24 @@ public class ScheduleController {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if (errorMap != null) return errorMap;
-
         Shift shift1 = scheduleService.save(shift,principal.getName());
         return new ResponseEntity<Shift>(shift1, HttpStatus.CREATED);
     }
 
     @GetMapping("/all")
-    public Iterable<Shift> getAllSchedule() {
-        return scheduleService.getAll();
+    public Iterable<Shift> getAllSchedule(Principal principal) {
+        return scheduleService.getAll(principal.getName());
     }
 
-
-    //employee id
-    @GetMapping("/{empId}/all")
-    public Iterable<Shift> getAllScheduleByEmpid(@PathVariable int empId) {
-        return scheduleService.getAllShiftById(empId);
+    @GetMapping("/{id}")
+    public Shift getScheduleByid(@PathVariable int id,Principal principal) {
+        return scheduleService.getShiftById(id,principal.getName());
     }
 
-    //not yet implemented fully
-    @GetMapping("/{empId}/{id}")
-    public ResponseEntity<?> getSchedulebyEmpId(@PathVariable int empId, @PathVariable int id) {
-        Shift shift = scheduleService.getShiftById(empId, id);
-        return new ResponseEntity<Shift>(shift, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/{empId}/")
-    public ResponseEntity<String> deleteScheduleByEmpId(@PathVariable int empId,@PathVariable int shiftId) {
-        scheduleService.deleteShiftByEmpId(empId,shiftId);
-        return new ResponseEntity<String>(empId + " was successfully deleted", HttpStatus.OK);
+    @DeleteMapping("/{shiftId}/")
+    public ResponseEntity<String> deleteScheduleById(@PathVariable int shiftId,Principal principal) {
+        scheduleService.deleteShiftByEmpId(shiftId,principal.getName());
+        return new ResponseEntity<String>(shiftId + " was successfully deleted", HttpStatus.OK);
     }
 
 }

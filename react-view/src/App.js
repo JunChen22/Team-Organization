@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Layout/Header";
-import DashBoard from "./components/DashBoard/DashBoard";
+import DashBoard from "./components/DashBoard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Landing from "./components/Layout/Landing";
 import Login from "./components/UserManagement/Login";
@@ -13,7 +13,9 @@ import setJWTToken from "./security/setJWTToken";
 import jwt_decode from "jwt-decode";
 import { SET_CURRENT_USER } from "./actions/types";
 import { logout } from "./actions/securityActions";
-import SideBar from "./components/sidebar/SideBar";
+import SideBar from "./components/Layout/SideBar";
+import SecuredRoute from "./security/SecureRoute";
+import NotFoundPage from "./components/NotFoundPage";
 
 const jwtToken = localStorage.jwtToken;
 
@@ -43,10 +45,11 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
-
             {
               //private routes
             }
+
+            <Route exact path="/DashBoard" component={DashBoard} />
           </div>
         </Router>
       </Provider>

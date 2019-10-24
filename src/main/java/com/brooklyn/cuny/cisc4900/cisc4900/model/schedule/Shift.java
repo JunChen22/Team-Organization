@@ -3,6 +3,7 @@ package com.brooklyn.cuny.cisc4900.cisc4900.model.schedule;
 import com.brooklyn.cuny.cisc4900.cisc4900.model.user.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -27,34 +28,23 @@ public class Shift {
     private int employeeId;
 
     @NotEmpty(message = " shift name cant be empty")
-    private String shiftName;
+    private String title;
 
     //@Temporal(TemporalType.TIME)
-    @JsonFormat(pattern = "hh:mm:ss")
-    private Time start_at;
+    @JsonFormat(pattern = "hh:mm")
+    private Time startTime;
 
     @Temporal(TemporalType.TIME)
     @JsonFormat(pattern = "hh:mm")
-    private Date end_at;
+    private Date endTime;
 
-    @NotBlank(message = " work_day  cant be empty")
-    private String work_day;
-
-    @JsonFormat(pattern = "yyyy-mm-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date work_date;
+    private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public int getId() {
         return id;
@@ -72,43 +62,43 @@ public class Shift {
         this.employeeId = employeeId;
     }
 
-    public String getShiftName() {
-        return shiftName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setShiftName(String shiftName) {
-        this.shiftName = shiftName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Time getStart_at() {
-        return start_at;
+    public Time getStartTime() {
+        return startTime;
     }
 
-    public void setStart_at(Time start_at) {
-        this.start_at = start_at;
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
     }
 
-    public Date getEnd_at() {
-        return end_at;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setEnd_at(Date end_at) {
-        this.end_at = end_at;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
-    public String getWork_day() {
-        return work_day;
+    public Date getDate() {
+        return date;
     }
 
-    public void setWork_day(String work_day) {
-        this.work_day = work_day;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public Date getWork_date() {
-        return work_date;
+    public User getUser() {
+        return user;
     }
 
-    public void setWork_date(Date work_date) {
-        this.work_date = work_date;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

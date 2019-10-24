@@ -63,15 +63,10 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody User user, BindingResult result) {
-
-        System.out.println("i was here");
         userValidator.validate(user, result);
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if (errorMap != null) return errorMap;
-
         User newUser = userService.saveUser(user);
-
-        System.out.println("should created account");
         return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
     }
 }

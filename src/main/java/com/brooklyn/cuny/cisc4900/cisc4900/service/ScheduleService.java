@@ -24,13 +24,18 @@ public class ScheduleService {
         return shiftRepo.save(shift);
     }
 
-    public Iterable<Shift> getAll() {
-        return shiftRepo.findAll();
+    public Iterable<Shift> getAll(String username) {
+        User user = userRepo.findByUsername(username);
+
+        if(user== null){
+            System.out.println("couldnt find the user");
+        }
+        return shiftRepo.findAllByUser(user);
     }
 
     //not done
-    public Shift getShiftById(int empId, int id) {
-        Iterable<Shift> shifts = shiftRepo.findAllByEmployeeId(empId);
+    public Shift getShiftById(int id,String username) {
+        Iterable<Shift> shifts = shiftRepo.findAllByEmployeeId(id);
 
         if (shifts == null) {
             throw new ShiftIdException("notthing found");
@@ -39,21 +44,12 @@ public class ScheduleService {
         return shiftRepo.findById(id);
     }
 
-    public Iterable<Shift> getAllShiftById(int empId) {
-        Iterable<Shift> shifts = shiftRepo.findAllByEmployeeId(empId);
 
-        if (shifts == null) {
-            throw new ShiftIdException("notthing found");
-        }
-
-        return shifts;
-    }
-
-    public void deleteShiftByEmpId(int empId,int shiftId) {
-        Shift shift = shiftRepo.findByEmployeeId(empId);
+    public void deleteShiftByEmpId(int shiftId,String username) {
+        Shift shift = shiftRepo.findByEmployeeId(shiftId);
         if (shift == null) {
-            throw new ShiftIdException(empId + " found was not found");
+            throw new ShiftIdException(shiftId + " found was not found");
         }
-        shiftRepo.deleteByEmployeeId(empId);
+        shiftRepo.deleteByEmployeeId(shiftId);
     }
 }

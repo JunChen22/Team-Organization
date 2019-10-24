@@ -21,7 +21,6 @@ export const createNewUser = (newUser, history) => async dispatch => {
 
 export const login = LoginRequest => async dispatch => {
   try {
-    console.log("i was here");
     const request = await axios.post("/api/user/login", LoginRequest);
 
     const { token } = request.data;

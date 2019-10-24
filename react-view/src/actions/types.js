@@ -1,2 +1,6 @@
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const GET_ERRORS = "GET_ERRORS";
+
+export const GET_SCHEDULES = "GET_SCHEDULES";
+export const GET_SCHEDULE = "GET_SCHEDULE";
+export const DELETE_SCHEDULE = "DELETE_SCHEDULE";
