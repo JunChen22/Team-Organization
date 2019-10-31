@@ -15,7 +15,7 @@ import { SET_CURRENT_USER } from "./actions/types";
 import { logout } from "./actions/securityActions";
 import SideBar from "./components/Layout/SideBar";
 import SecuredRoute from "./security/SecureRoute";
-import NotFoundPage from "./components/NotFoundPage";
+import AddSchedule from "./components/Schedule/AddSchedule";
 
 const jwtToken = localStorage.jwtToken;
 
@@ -48,8 +48,10 @@ class App extends Component {
             {
               //private routes
             }
-
-            <Route exact path="/DashBoard" component={DashBoard} />
+            <Switch>
+              <SecuredRoute exact path="/dashboard" component={DashBoard} />
+              <SecuredRoute exact path="/addschedule" component={AddSchedule} />
+            </Switch>
           </div>
         </Router>
       </Provider>

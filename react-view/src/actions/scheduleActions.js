@@ -8,6 +8,7 @@ import {
 
 export const createSchedule = (schedule, history) => async dispatch => {
   try {
+    console.log("at creating action");
     await axios.post("/api/schedule", schedule);
     history.push("/dashboard");
     dispatch({

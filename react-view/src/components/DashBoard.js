@@ -7,11 +7,11 @@ import "../App.css";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
+import CreateScheduleForm from "./Schedule/CreateScheduleForm";
 
 class DashBoard extends Component {
   componentDidMount() {
     this.props.getSchedules();
-    console.log("at did mount");
   }
 
   render() {
@@ -23,7 +23,10 @@ class DashBoard extends Component {
     for (let i = 0; i < schedules.length; i++) {
       eventList.push({
         title: schedules[i].title,
-        date: schedules[i].date
+        date: schedules[i].date,
+        description: "test desp"
+        //startTime: schedules[i].startTime,
+        //endTime: schedules[i].endTime
       });
     }
     console.log(eventList);
@@ -34,6 +37,7 @@ class DashBoard extends Component {
             <div className="col-md-12">
               <h1 className="display-4 text-center">schedules</h1>
               <br />
+              <CreateScheduleForm />
               <br />
               <hr />
               {schedules.map(schedule => (
@@ -47,11 +51,9 @@ class DashBoard extends Component {
                     center: "dayGridMonth,timeGridWeek",
                     right: "today prev,next "
                   }}
-                  timeZone={"America/New_York"}
                   defaultView="dayGridMonth"
                   plugins={[timeGridPlugin, dayGridPlugin]}
                   height={600}
-                  //timeFormat={"hh:mm"}
                   events={eventList}
                 />
               </div>

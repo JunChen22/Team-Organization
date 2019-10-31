@@ -156,3 +156,7 @@ body {
   height: 800;
   width: 60%;
 }
+
+.form-row {
+  height: 25px;
+}

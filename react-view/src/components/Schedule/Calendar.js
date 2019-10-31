@@ -11,9 +11,6 @@ const eventList = [
     date: "2019-10-25"
   }
 ];
-// create function to set it to the list
-
-//adds a week view to this and we're done with this ccaldender
 
 class Calendar extends Component {
   render() {
