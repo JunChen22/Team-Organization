@@ -1,5 +1,6 @@
 package com.brooklyn.cuny.cisc4900.cisc4900.controller;
 
+import com.brooklyn.cuny.cisc4900.cisc4900.model.schedule.Schedule;
 import com.brooklyn.cuny.cisc4900.cisc4900.model.schedule.Shift;
 import com.brooklyn.cuny.cisc4900.cisc4900.service.MapValidationErrorService;
 import com.brooklyn.cuny.cisc4900.cisc4900.service.ScheduleService;
@@ -23,13 +24,15 @@ public class ScheduleController {
     @Autowired
     private MapValidationErrorService mapValidationErrorService;
 
+
     @PostMapping("")
-    public ResponseEntity<?> createNewSchedule(@Valid @RequestBody Shift shift, BindingResult result, Principal principal) {
+    public ResponseEntity<?> createNewSchedule(@Valid @RequestBody Schedule schedule, BindingResult result, Principal principal) {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if (errorMap != null) return errorMap;
-        Shift shift1 = scheduleService.save(shift,principal.getName());
-        return new ResponseEntity<Shift>(shift1, HttpStatus.CREATED);
+
+        Schedule newSchedule = scheduleService.save(schedule,principal.getName());
+        return new ResponseEntity<Schedule>(newSchedule, HttpStatus.CREATED);
     }
 
     @GetMapping("/all")
@@ -47,5 +50,4 @@ public class ScheduleController {
         scheduleService.deleteShiftByEmpId(shiftId,principal.getName());
         return new ResponseEntity<String>(shiftId + " was successfully deleted", HttpStatus.OK);
     }
-
 }

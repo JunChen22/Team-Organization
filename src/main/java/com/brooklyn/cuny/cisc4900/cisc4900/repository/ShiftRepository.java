@@ -12,10 +12,10 @@ public interface ShiftRepository extends CrudRepository<Shift, Integer> {
     Shift findById(int shiftId);
 
     //currently is used with use id
-    Iterable<Shift> findAllByEmployeeId(int empId);
+    //Iterable<Shift> findAllByEmployeeId(int empId);
 
     //employee id
-    Shift findByEmployeeId(int empId);
+    //Shift findByEmployeeId(int empId);
 
-    void deleteByEmployeeId(int empId);
+    //void deleteByEmployeeId(int empId);
 }

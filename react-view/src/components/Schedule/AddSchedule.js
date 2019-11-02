@@ -48,10 +48,12 @@ class AddSchedule extends Component {
 
       //if found
       if (idxOfDay !== -1) {
-        this.state.days[idxOfDay] = {
-          ...this.state.days[idxOfDay],
-          [timeName]: target.value
-        };
+        this.setState(
+          (this.state.days[idxOfDay] = {
+            ...this.state.days[idxOfDay],
+            [timeName]: target.value
+          })
+        );
       } else {
         this.state.days.push({
           day: dayName,
@@ -262,7 +264,7 @@ class AddSchedule extends Component {
                         <input
                           className="form-control"
                           type="time"
-                          name="saturaday-startTime"
+                          name="saturday-startTime"
                           value={this.state.time}
                           onChange={this.onChange}
                         />

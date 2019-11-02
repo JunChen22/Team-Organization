@@ -19,28 +19,37 @@ public class Shift {
     public Shift() {
     }
 
+    public Shift(Shift shift) {
+        this.setTitle(shift.getTitle());
+        this.setEndTime(shift.getEndTime());
+        this.setStartTime(shift.getStartTime());
+        this.setDay(shift.getDay());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private String day;
+
+    /*
     @NotNull(message = "employee id can not be null")
     @Column(name = "employee_id")
     private int employeeId;
+    */
 
     @NotEmpty(message = " shift name cant be empty")
     private String title;
 
     //@Temporal(TemporalType.TIME)
-    @JsonFormat(pattern = "hh:mm")
+    @JsonFormat(pattern = "HH:mm")
     private Time startTime;
 
-    @Temporal(TemporalType.TIME)
-    @JsonFormat(pattern = "hh:mm")
-    private Date endTime;
+    //@Temporal(TemporalType.TIME)
+    @JsonFormat(pattern = "HH:mm")
+    private Time endTime;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
-    private Date date;
+    private String date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
@@ -52,14 +61,6 @@ public class Shift {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
     }
 
     public String getTitle() {
@@ -78,24 +79,32 @@ public class Shift {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public Time getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(Time endTime) {
         this.endTime = endTime;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
     public User getUser() {
         return user;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public void setUser(User user) {
