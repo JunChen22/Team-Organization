@@ -1,5 +1,7 @@
 package com.brooklyn.cuny.cisc4900.cisc4900.model.organization;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,25 +19,20 @@ public class Organization {
     @Column(name = "organization_desc")
     private String organizationDesc;
 
+    @JsonIgnore
     @Column(name = "owner")
     private String owner;
 
     @Column(name = "business_type")
     private String businessType;
 
-    @Column(name = "employee_size")
-    private int employeeSize;
-
-    @Column(name = "create_date")
+    @JsonIgnore
+    @Column(name = "createdate")
     private String createDate;
 
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
+    @JsonIgnore
+    @Column(name = "lastUpdate")
+    private String lastUpdate;
 
     public int getOrganizationId() {
         return organizationId;
@@ -53,6 +50,22 @@ public class Organization {
         this.organizationName = organizationName;
     }
 
+    public String getOrganizationDesc() {
+        return organizationDesc;
+    }
+
+    public void setOrganizationDesc(String organizationDesc) {
+        this.organizationDesc = organizationDesc;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
     public String getBusinessType() {
         return businessType;
     }
@@ -61,11 +74,19 @@ public class Organization {
         this.businessType = businessType;
     }
 
-    public String getOrganizationDesc() {
-        return organizationDesc;
+    public String getCreateDate() {
+        return createDate;
     }
 
-    public void setOrganizationDesc(String organizationDesc) {
-        this.organizationDesc = organizationDesc;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(String lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 }

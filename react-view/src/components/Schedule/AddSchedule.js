@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createSchedule } from "../../actions/scheduleActions";
 import classnames from "classnames";
+import { Link } from "react-router-dom";
 
 class AddSchedule extends Component {
   constructor() {
@@ -307,9 +308,15 @@ class AddSchedule extends Component {
                   </div>
                   <input
                     type="submit"
-                    className="btn btn-primary btn-block mt-4"
+                    className="btn btn-primary btn-block mt-2"
                     onSubmit={this.onSubmit}
                   />
+                  <Link
+                    className="btn btn-primary btn-block mt-2"
+                    to="/dashboard"
+                  >
+                    Cancel
+                  </Link>
                 </form>
               </div>
             </div>

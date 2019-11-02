@@ -26,7 +26,6 @@ public class Employee {
     private String jobTittle;
 
     @Column(name = "hire_date")
-    @NotEmpty(message = "First name can not be empty")
     private String hireDate;
 
     @Column(name = "leave_date")
