@@ -23,8 +23,8 @@ class DashBoard extends Component {
     for (let i = 0; i < schedules.length; i++) {
       eventList.push({
         title: schedules[i].title,
-        date: schedules[i].date,
-        description: "test desp"
+        date: schedules[i].date
+        //description: "test desp",
         //startTime: schedules[i].startTime,
         //endTime: schedules[i].endTime
       });
