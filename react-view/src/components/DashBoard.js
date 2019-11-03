@@ -16,8 +16,6 @@ class DashBoard extends Component {
 
   render() {
     const { schedules } = this.props.schedule;
-    console.log(schedules);
-    console.log("after displaying the schedules gonna assign to event list");
 
     const eventList = [];
     for (let i = 0; i < schedules.length; i++) {
@@ -29,7 +27,6 @@ class DashBoard extends Component {
         //endTime: schedules[i].endTime
       });
     }
-    console.log(eventList);
     return (
       <div className="schedules">
         <div className="container">

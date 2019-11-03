@@ -3,6 +3,9 @@ package com.brooklyn.cuny.cisc4900.cisc4900.model.organization;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "organization")
@@ -10,21 +13,29 @@ public class Organization {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "organization_id")
-    private int organizationId;
+    @Column(name = "id")
+    private int id;
 
-    @Column(name = "organization_name")
-    private String organizationName;
+    @Column(name = "orgName")
+    @NotBlank(message = "organization name can not be empty")
+    private String orgName;
 
-    @Column(name = "organization_desc")
-    private String organizationDesc;
+    @Column(name = "description")
+    private String description;
 
-    @JsonIgnore
-    @Column(name = "owner")
-    private String owner;
+    @Column(name = "createBy")
+    private String createBy;
 
     @Column(name = "business_type")
     private String businessType;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "email")
+    @Email(message = "Email is invalid")
+    @NotBlank(message = "email can not be empty")
+    private String email;
 
     @JsonIgnore
     @Column(name = "createdate")
@@ -34,36 +45,36 @@ public class Organization {
     @Column(name = "lastUpdate")
     private String lastUpdate;
 
-    public int getOrganizationId() {
-        return organizationId;
+    public int getId() {
+        return id;
     }
 
-    public void setOrganizationId(int organizationId) {
-        this.organizationId = organizationId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getOrganizationName() {
-        return organizationName;
+    public String getOrgName() {
+        return orgName;
     }
 
-    public void setOrganizationName(String organizationName) {
-        this.organizationName = organizationName;
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
     }
 
-    public String getOrganizationDesc() {
-        return organizationDesc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setOrganizationDesc(String organizationDesc) {
-        this.organizationDesc = organizationDesc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getOwner() {
-        return owner;
+    public String getCreateBy() {
+        return createBy;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
     }
 
     public String getBusinessType() {
@@ -72,6 +83,22 @@ public class Organization {
 
     public void setBusinessType(String businessType) {
         this.businessType = businessType;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getCreateDate() {

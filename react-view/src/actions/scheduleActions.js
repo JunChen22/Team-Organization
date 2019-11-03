@@ -8,7 +8,6 @@ import {
 
 export const createSchedule = (schedule, history) => async dispatch => {
   try {
-    console.log("at creating action");
     await axios.post("/api/schedule", schedule);
     history.push("/dashboard");
     dispatch({
@@ -24,7 +23,6 @@ export const createSchedule = (schedule, history) => async dispatch => {
 };
 
 export const getSchedules = () => async dispatch => {
-  console.log("im at get all schedules");
   const res = await axios.get("/api/schedule/all");
   dispatch({
     type: GET_SCHEDULES,

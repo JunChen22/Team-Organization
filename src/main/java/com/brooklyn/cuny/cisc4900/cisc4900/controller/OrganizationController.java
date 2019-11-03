@@ -3,6 +3,7 @@ package com.brooklyn.cuny.cisc4900.cisc4900.controller;
 import com.brooklyn.cuny.cisc4900.cisc4900.model.organization.Employee;
 import com.brooklyn.cuny.cisc4900.cisc4900.model.organization.Organization;
 import com.brooklyn.cuny.cisc4900.cisc4900.model.schedule.Schedule;
+import com.brooklyn.cuny.cisc4900.cisc4900.service.MapValidationErrorService;
 import com.brooklyn.cuny.cisc4900.cisc4900.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,9 @@ public class OrganizationController {
     @Autowired
     private OrganizationService organiService;
 
+    @Autowired
+    private MapValidationErrorService mapValidationErrorService;
+
     @GetMapping("/")
     public void getOrganization(Principal principal){
 
@@ -27,7 +31,12 @@ public class OrganizationController {
 
     @PostMapping("/create")
     public ResponseEntity<?> createNewOrganization(@Valid @RequestBody Organization organization, BindingResult result, Principal principal) {
-        return new ResponseEntity<>("created", HttpStatus.CREATED);
+
+        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+        if (errorMap != null) return errorMap;
+
+        organiService.saveOrganization(organization,principal.getName());
+        return new ResponseEntity<>(organization, HttpStatus.CREATED);
     }
 
     @PostMapping("/add")

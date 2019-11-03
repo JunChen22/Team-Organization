@@ -8,6 +8,9 @@ export default props => {
       <Link className="menu-item" to="/">
         Home
       </Link>
+      <Link className="menu-item" to="/organization">
+        Organization
+      </Link>
       <Link className="menu-item" to="/project">
         Projects
       </Link>

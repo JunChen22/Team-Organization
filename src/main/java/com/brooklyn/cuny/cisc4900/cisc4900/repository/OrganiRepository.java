@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrganiRepository extends JpaRepository<Organization, Integer> {
 
-    Organization findOrganizationByorganizationName(String name);
+    Organization findByOrgName(String name);
 }

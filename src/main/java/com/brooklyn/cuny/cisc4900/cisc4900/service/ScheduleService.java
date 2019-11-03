@@ -45,13 +45,9 @@ public class ScheduleService {
         }
 
         for(Shift shift : schedule.getShifts()){
-            System.out.println(schedule.getDate()+ " "+ shift.getDay()+" "+schedule.getDurationWeek());
             List<String> dates = getDateByDay(schedule.getDate(),shift.getDay(),schedule.getDurationWeek());
-
-            for(String d : dates)System.out.println(d);
             for(int i = 0;i< schedule.getDurationWeek();i++){
                 //create a new shift
-                System.out.println(i);
                 if(i==0){
                     shift.setDate(dates.get(i));
                     shift.setUser(user);
@@ -65,8 +61,6 @@ public class ScheduleService {
                 }
             }
         }
-
-        //shift.setUser(user);
         return scheduleRepo.save(schedule);
     }
 

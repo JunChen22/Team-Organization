@@ -16,6 +16,8 @@ import { logout } from "./actions/securityActions";
 import SideBar from "./components/Layout/SideBar";
 import SecuredRoute from "./security/SecureRoute";
 import AddSchedule from "./components/Schedule/AddSchedule";
+import AddOrganization from "./components/Organization/AddOrganization";
+import Organization from "./components/Organization/Organization";
 
 const jwtToken = localStorage.jwtToken;
 
@@ -51,6 +53,16 @@ class App extends Component {
             <Switch>
               <SecuredRoute exact path="/dashboard" component={DashBoard} />
               <SecuredRoute exact path="/addschedule" component={AddSchedule} />
+              <SecuredRoute
+                exact
+                path="/organization/"
+                component={Organization}
+              />
+              <SecuredRoute
+                exact
+                path="/organization/create"
+                component={AddOrganization}
+              />
             </Switch>
           </div>
         </Router>
