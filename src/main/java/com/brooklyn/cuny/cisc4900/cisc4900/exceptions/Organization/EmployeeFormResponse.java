@@ -1,10 +1,10 @@
-package com.brooklyn.cuny.cisc4900.cisc4900.exceptions;
+package com.brooklyn.cuny.cisc4900.cisc4900.exceptions.Organization;
 
-public class OrganizationAlreadyExistResponse {
+public class EmployeeFormResponse {
 
     private String message;
 
-    public OrganizationAlreadyExistResponse(String message) {
+    public EmployeeFormResponse(String message) {
         this.message = message;
     }
 
@@ -15,4 +15,5 @@ public class OrganizationAlreadyExistResponse {
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

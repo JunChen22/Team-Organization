@@ -1,8 +1,12 @@
 package com.brooklyn.cuny.cisc4900.cisc4900.model.organization;
 
 import com.brooklyn.cuny.cisc4900.cisc4900.model.schedule.Shift;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,58 +16,129 @@ import java.util.List;
 public class Employee {
 
     @Id
-    @Column(name = "employee_id")
+    @Column(name = "idemployee")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int employeeId;
+    private int idemployee;
 
-    @Column(name = "department_name")
-    private String department;
+    @Column(name = "email")
+    @Email(message = "Email is invalid")
+    @NotBlank(message = "Email can not be empty")
+    private String email;
 
-    @Column(name = "user_id")
-    private int userId;
+    @NotBlank(message = "First name can not be empty")
+    private String firstName;
 
-    @Column(name = "job_tittle")
-    private String jobTittle;
+    @NotBlank(message = "Last name can not be empty")
+    private String lastName;
 
+    @NotBlank(message = "Address can not be empty")
+    private String address;
+
+    private String phoneNumber;
+
+    private String DOB;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "idorganization")
+    private Organization organization;
+
+    @NotBlank(message = "Position can not be empty")
+    @Column(name = "position")
+    private String position;
+
+    private boolean active;
+
+    @JsonIgnore
     @Column(name = "hire_date")
     private String hireDate;
 
+    @JsonIgnore
+    @Column(name = "last_update")
+    private String lastUpdate;
+
+    @JsonIgnore
     @Column(name = "leave_date")
     private String leaveDate;
 
-    @Column(name = "work_email")
-    private String workEmail;
-
-    public int getEmployeeId() {
-        return employeeId;
+    public int getIdemployee() {
+        return idemployee;
     }
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+    public void setIdemployee(int idemployee) {
+        this.idemployee = idemployee;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getJobTittle() {
-        return jobTittle;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setJobTittle(String jobTittle) {
-        this.jobTittle = jobTittle;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public String getHireDate() {
@@ -74,6 +149,14 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
+    public String getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(String lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
     public String getLeaveDate() {
         return leaveDate;
     }
@@ -81,13 +164,5 @@ public class Employee {
     public void setLeaveDate(String leaveDate) {
         this.leaveDate = leaveDate;
     }
-
-    public String getWorkEmail() {
-        return workEmail;
-    }
-
-    public void setWorkEmail(String workEmail) {
-        this.workEmail = workEmail;
-    }
-
 }
+

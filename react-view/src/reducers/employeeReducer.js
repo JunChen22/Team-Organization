@@ -1,15 +1,16 @@
-import { GET_ORGANIZATION } from "../actions/types";
+import { GET_MEMBERS } from "../actions/types";
 
 const initialState = {
-  organization: []
+  employees: [],
+  employee: {}
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_ORGANIZATION:
+    case GET_MEMBERS:
       return {
         ...state,
-        organization: action.payload
+        employees: action.payload
       };
     default:
       return state;

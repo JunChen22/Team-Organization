@@ -1,12 +1,11 @@
 package com.brooklyn.cuny.cisc4900.cisc4900.model.schedule;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.brooklyn.cuny.cisc4900.cisc4900.model.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.sql.Time;
-import java.util.Date;
+import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,8 +17,10 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @JsonIgnore
     private String createdBy ;
 
+    @NotBlank(message = "tittle can not be empty")
     private String title;
 
     @JsonProperty("shifts")
@@ -30,6 +31,8 @@ public class Schedule {
 
     private String date;
 
+    private String email;
+
     @JsonIgnore
     @Column(name = "createDate")
     private String createDate;
@@ -37,6 +40,15 @@ public class Schedule {
     @JsonIgnore
     @Column(name = "lastUpdate")
     private String lastUpdate;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 
     public int getDurationWeek() {
         return durationWeek;

@@ -30,7 +30,9 @@ public class ScheduleController {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if (errorMap != null) return errorMap;
-
+        for(Shift shift :schedule.getShifts()){
+            System.out.println(shift.getTitle());
+        }
         Schedule newSchedule = scheduleService.save(schedule,principal.getName());
         return new ResponseEntity<Schedule>(newSchedule, HttpStatus.CREATED);
     }

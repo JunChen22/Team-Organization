@@ -1,5 +1,9 @@
 package com.brooklyn.cuny.cisc4900.cisc4900.exceptions;
 
+import com.brooklyn.cuny.cisc4900.cisc4900.exceptions.Organization.OrganizationAlreadyExistException;
+import com.brooklyn.cuny.cisc4900.cisc4900.exceptions.Organization.OrganizationAlreadyExistResponse;
+import com.brooklyn.cuny.cisc4900.cisc4900.exceptions.User.UserAlreadyExistException;
+import com.brooklyn.cuny.cisc4900.cisc4900.exceptions.User.UserAlreadyExistResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

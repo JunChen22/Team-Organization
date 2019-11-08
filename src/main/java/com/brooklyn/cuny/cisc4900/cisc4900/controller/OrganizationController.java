@@ -3,6 +3,7 @@ package com.brooklyn.cuny.cisc4900.cisc4900.controller;
 import com.brooklyn.cuny.cisc4900.cisc4900.model.organization.Employee;
 import com.brooklyn.cuny.cisc4900.cisc4900.model.organization.Organization;
 import com.brooklyn.cuny.cisc4900.cisc4900.model.schedule.Schedule;
+import com.brooklyn.cuny.cisc4900.cisc4900.service.EmployeeService;
 import com.brooklyn.cuny.cisc4900.cisc4900.service.MapValidationErrorService;
 import com.brooklyn.cuny.cisc4900.cisc4900.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,13 @@ public class OrganizationController {
     private OrganizationService organiService;
 
     @Autowired
+    private EmployeeService employeeService;
+    @Autowired
     private MapValidationErrorService mapValidationErrorService;
 
     @GetMapping("/")
-    public void getOrganization(Principal principal){
-
+    public Organization getOrganization(Principal principal){
+        return organiService.getOrganization(principal.getName());
     }
 
     @PostMapping("/create")
@@ -40,13 +43,22 @@ public class OrganizationController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addEmployee(@Valid @RequestBody Employee employee, BindingResult result, Principal principal) {
-        return new ResponseEntity<>("employee added", HttpStatus.CREATED);
+    public ResponseEntity<?> addEmployee(@Valid @RequestBody Employee newEmployee, BindingResult result, Principal principal) {
+        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+        if (errorMap != null) return errorMap;
+
+        employeeService.saveOrUpdateEmployee(newEmployee,principal.getName());
+        return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/all")
+    public Iterable<Employee> getAllEmployees(Principal principal) {
+        return employeeService.getAllEmployee(principal.getName());
     }
 
     @DeleteMapping("/remove")
-    public ResponseEntity<?> removeEmployee(@Valid @RequestBody Employee employee, BindingResult result, Principal principal) {
-        return new ResponseEntity<>("employee removed", HttpStatus.CREATED);
+    public ResponseEntity<?> removeEmployee(@Valid @RequestBody Employee employee ,Principal principal) {
+        return new ResponseEntity<>("employee: "+employee.getFirstName() +" "+employee.getLastName(), HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteorganization")

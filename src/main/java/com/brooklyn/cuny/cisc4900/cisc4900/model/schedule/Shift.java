@@ -38,16 +38,15 @@ public class Shift {
     private int employeeId;
     */
 
-    @NotEmpty(message = " shift name cant be empty")
     private String title;
 
     //@Temporal(TemporalType.TIME)
-    @JsonFormat(pattern = "HH:mm")
-    private Time startTime;
+    //@JsonFormat(pattern = "HH:mm")
+    private String startTime;
 
     //@Temporal(TemporalType.TIME)
-    @JsonFormat(pattern = "HH:mm")
-    private Time endTime;
+    //@JsonFormat(pattern = "HH:mm")
+    private String endTime;
 
     private String date;
 
@@ -71,19 +70,19 @@ public class Shift {
         this.title = title;
     }
 
-    public Time getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Time getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

@@ -34,7 +34,7 @@ class DashBoard extends Component {
             <div className="col-md-12">
               <h1 className="display-4 text-center">schedules</h1>
               <br />
-              <CreateScheduleForm />
+
               <br />
               <hr />
               {schedules.map(schedule => (

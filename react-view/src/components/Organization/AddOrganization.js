@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { createOrganization } from "../../actions/organizationActions";
 
 class AddOranization extends Component {
@@ -102,9 +103,11 @@ class AddOranization extends Component {
                       onChange={this.onChange}
                       className="form-control form-control-lg"
                     >
-                      <option value="Corporation" selected>
-                        Corporation
+                      <option disabled selected value>
+                        {" "}
+                        -- select an option --{" "}
                       </option>
+                      <option value="Corporation">Corporation</option>
                       <option value="Partnership">Partnership</option>
                       <option value="LLC">LLC</option>
                       <option value="Sole proprietorship">
@@ -141,6 +144,12 @@ class AddOranization extends Component {
                   </div>
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-2" />
+                <Link
+                  className="btn btn-primary btn-block mt-2"
+                  to="/organization"
+                >
+                  Cancel
+                </Link>
               </form>
             </div>
           </div>

@@ -1,4 +1,4 @@
-package com.brooklyn.cuny.cisc4900.cisc4900.exceptions;
+package com.brooklyn.cuny.cisc4900.cisc4900.exceptions.Organization;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

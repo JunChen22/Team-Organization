@@ -1,10 +1,13 @@
 package com.brooklyn.cuny.cisc4900.cisc4900.repository;
 
 import com.brooklyn.cuny.cisc4900.cisc4900.model.organization.Employee;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.brooklyn.cuny.cisc4900.cisc4900.model.organization.Organization;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
+    Iterable<Employee> findAllByOrganization(Organization organization);
+    Employee findByEmail(String email);
 }

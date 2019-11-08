@@ -68,15 +68,13 @@ class AddSchedule extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-
     const newschedule = {
       title: this.state.title,
       date: this.state.date,
-      duration: this.state.duration,
-      shifts: this.state.days
+      durationWeek: this.state.duration,
+      shifts: this.state.days,
+      email: this.props.location.state.email
     };
-
-    console.log("after submit");
     console.log(newschedule);
     this.props.createSchedule(newschedule, this.props.history);
   }
@@ -104,17 +102,25 @@ class AddSchedule extends Component {
                       value={this.state.title}
                       onChange={this.onChange}
                     />
+                    {errors.title && (
+                      <div className="invalid-feedback">{errors.title}</div>
+                    )}
                   </div>
 
                   <label for="start_date">Start date</label>
                   <div className="form-group">
                     <input
                       type="date"
-                      className="form-control form-control-lg"
+                      className={classnames("form-control form-control-lg", {
+                        "is-invalid": errors.date
+                      })}
                       name="date"
                       value={this.state.start_date}
                       onChange={this.onChange}
                     />
+                    {errors.start_date && (
+                      <div className="invalid-feedback">{errors.date}</div>
+                    )}
                   </div>
 
                   <h6>Duration</h6>
@@ -125,6 +131,10 @@ class AddSchedule extends Component {
                       onChange={this.onChange}
                       className="form-control form-control-lg"
                     >
+                      <option disabled selected value>
+                        {" "}
+                        -- select an option --{" "}
+                      </option>
                       <option value="1">One week</option>
                       <option value="2">Two week</option>
                       <option value="4">One month</option>
@@ -259,7 +269,7 @@ class AddSchedule extends Component {
                   <div className="form-group">
                     <div className="form-row">
                       <label className="col-sm-2 col-form-label">
-                        Saturaday
+                        Saturday
                       </label>
                       <div className="form-group col-md-3">
                         <input
@@ -275,7 +285,7 @@ class AddSchedule extends Component {
                         <input
                           className="form-control"
                           type="time"
-                          name="saturaday-endTime"
+                          name="saturday-endTime"
                           value={this.state.time}
                           onChange={this.onChange}
                         />

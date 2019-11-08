@@ -1,9 +1,10 @@
-package com.brooklyn.cuny.cisc4900.cisc4900.exceptions;
+package com.brooklyn.cuny.cisc4900.cisc4900.exceptions.Organization;
 
-public class UserAlreadyExistResponse {
+public class OrganizationAlreadyExistResponse {
+
     private String message;
 
-    public UserAlreadyExistResponse(String message) {
+    public OrganizationAlreadyExistResponse(String message) {
         this.message = message;
     }
 

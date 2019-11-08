@@ -18,6 +18,7 @@ import SecuredRoute from "./security/SecureRoute";
 import AddSchedule from "./components/Schedule/AddSchedule";
 import AddOrganization from "./components/Organization/AddOrganization";
 import Organization from "./components/Organization/Organization";
+import AddEmployee from "./components/Organization/AddEmployee";
 
 const jwtToken = localStorage.jwtToken;
 
@@ -62,6 +63,11 @@ class App extends Component {
                 exact
                 path="/organization/create"
                 component={AddOrganization}
+              />
+              <SecuredRoute
+                exact
+                path="/organization/add"
+                component={AddEmployee}
               />
             </Switch>
           </div>

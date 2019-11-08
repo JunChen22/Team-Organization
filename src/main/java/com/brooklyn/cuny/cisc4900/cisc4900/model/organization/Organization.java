@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "organization")
@@ -13,8 +15,8 @@ public class Organization {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "idorganization")
+    private int idorganization;
 
     @Column(name = "orgName")
     @NotBlank(message = "organization name can not be empty")
@@ -45,12 +47,16 @@ public class Organization {
     @Column(name = "lastUpdate")
     private String lastUpdate;
 
-    public int getId() {
-        return id;
+
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "organization", orphanRemoval = true)
+    private List<Employee> employees = new ArrayList<>();
+
+    public int getIdorganization() {
+        return idorganization;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdorganization(int idorganization) {
+        this.idorganization = idorganization;
     }
 
     public String getOrgName() {
@@ -115,5 +121,13 @@ public class Organization {
 
     public void setLastUpdate(String lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }

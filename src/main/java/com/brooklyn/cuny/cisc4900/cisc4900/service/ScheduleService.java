@@ -31,13 +31,14 @@ public class ScheduleService {
 
     public Schedule save(Schedule schedule, String username) {
         //theres couple exception here
-        User user = userRepo.findByUsername(username);
+        User user = userRepo.findByUsername(schedule.getEmail());
 
         //set create time and modity time
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         schedule.setCreateDate(dateFormat.format(date));
         schedule.setLastUpdate(dateFormat.format(date));
+        schedule.setCreatedBy(username);
 
         //add title to each shifts
         for(Shift shift :schedule.getShifts()){
@@ -104,7 +105,6 @@ public class ScheduleService {
         return shiftRepo.findAllByUser(user);
     }
 
-    //not done
     public Shift getShiftById(int id,String username) {
         //Iterable<Shift> shifts = shiftRepo.findAllByEmployeeId(id);
 

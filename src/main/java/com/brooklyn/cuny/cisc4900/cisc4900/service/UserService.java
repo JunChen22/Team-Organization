@@ -1,6 +1,6 @@
 package com.brooklyn.cuny.cisc4900.cisc4900.service;
 
-import com.brooklyn.cuny.cisc4900.cisc4900.exceptions.UserAlreadyExistException;
+import com.brooklyn.cuny.cisc4900.cisc4900.exceptions.User.UserAlreadyExistException;
 import com.brooklyn.cuny.cisc4900.cisc4900.model.user.User;
 import com.brooklyn.cuny.cisc4900.cisc4900.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

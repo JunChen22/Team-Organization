@@ -5,7 +5,7 @@ const CreateScheduleForm = () => {
   return (
     <React.Fragment>
       <Link to="/organization/create" className="btn btn-lg btn-info">
-        create a organization
+        create an organization
       </Link>
     </React.Fragment>
   );
