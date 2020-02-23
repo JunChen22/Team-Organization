@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MappingController {
-
+    
+    /*
     @GetMapping(value = "/")
     public String home() {
         return "this is homepage";
@@ -15,4 +16,5 @@ public class MappingController {
     public String about() {
         return "at about us";
     }
+    */
 }
