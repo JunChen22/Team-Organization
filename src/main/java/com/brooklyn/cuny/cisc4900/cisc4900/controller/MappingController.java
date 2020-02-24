@@ -5,11 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MappingController {
-<<<<<<< HEAD
-
-    @GetMapping(value = "/something")
-=======
-    
     /*
     @GetMapping(value = "/")
 >>>>>>> 665a7025202394b74ca258f95cb83a53e7cb428a
