@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MappingController {
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/something")
     public String home() {
         return "this is homepage";
     }
