@@ -1,4 +1,6 @@
-# CISC 4900 project [![Build Status](https://travis-ci.com/JunChen22/spring-boot-hibernate-psql-rest-api.svg?branch=master)](https://travis-ci.com/JunChen22/spring-boot-hibernate-psql-rest-api)
+# Team organization for CISC 4900 project. [![Build Status](https://travis-ci.com/JunChen22/spring-boot-hibernate-psql-rest-api.svg?branch=master)](https://travis-ci.com/JunChen22/spring-boot-hibernate-psql-rest-api)
+
+
 
 Requirement:
 Java 1.8<br />
